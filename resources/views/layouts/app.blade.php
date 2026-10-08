@@ -56,11 +56,38 @@
                             @if (auth()->user()->type === 'admin')
                                 <a class="nav-link" href="{{ route('admin.users.index') }}">User List</a>
                                 <a class="nav-link" href="{{ route('admin.leave.list') }}">admin Leave List</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.orders.index') }}">
+                                        Manage Orders
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.notifications.index') }}">
+                                        Notifications
+
+                                        <span id="notification-count" class="badge bg-danger"
+                                            @if (auth()->user()->unreadNotifications()->count() === 0) style="display:none" @endif>
+                                            {{ auth()->user()->unreadNotifications()->count() }}
+                                        </span>
+                                    </a>
+                                </li>
                             @endif
 
                             @if (auth()->user()->type === 'user')
                                 <a class="nav-link" href="{{ route('leave.create') }}">Apply Leave</a>
                                 <a class="nav-link" href="{{ route('leave.list') }}">Apply Leave Status</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('products.index') }}">
+                                        Products
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('orders.my') }}">
+                                        My Orders
+                                    </a>
+                                </li>
                             @endif
 
                             <li class="nav-item dropdown">
@@ -96,3 +123,5 @@
 </body>
 
 </html>
+
+
